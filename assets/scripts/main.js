@@ -45,15 +45,6 @@ function addRecipesToDocument(recipes) {
   //            create a <recipe-card> element for each one, and populate
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
-  /*let length = recipes.length;
-  if(length == null){
-    length = 0;
-  }
-  for(let i=0; i < length; i++){
-    let curItem = document.createElement('recipe-card');
-    curItem.data = recipes[i];
-    main.append(curItem);
-  }*/
   for (let recipe in recipes){
     console.log(recipe);
     let curItem = document.createElement('recipe-card');
@@ -82,18 +73,12 @@ function saveRecipesToStorage(recipes) {
 function initFormHandler() {
 
   // B2. TODO - Get a reference to the <form> element
-  const form = document.querySelector('form');
-  /*const formData = new FormData(form);
-  let recipeObject = [formData.entries()];
-  console.log(recipeObject);*/
-  
+  const form = document.querySelector('form'); 
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
   form.addEventListener('submit', function(){
     const formData = new FormData(form);
-    //console.log(formData);
     let recipeObject = [...formData];
-    //console.log(recipeObject);
     var recData = {
       imgSrc:  recipeObject[0][1],
       imgAlt: recipeObject[1][1],
@@ -110,11 +95,8 @@ function initFormHandler() {
     const main = document.querySelector('main');
     main.append(card);
     let recipes = getRecipesFromStorage();
-    //console.log(recipes);
     recipes.push(recData);
-    //console.log(recipes);
     saveRecipesToStorage(recipes);
-    //console.log(getRecipesFromStorage());
   });
 
   // Steps B4-B9 will occur inside the event listener from step B3
